@@ -46,6 +46,7 @@ const Avatar = ({ collective, src, type = 'USER', radius, name, ...styleProps })
       src = getCollectiveImage(collective);
     }
   }
+
   return (
     <StyledAvatar size={radius} type={type} src={src} {...styleProps}>
       {!src && type === 'USER' && name && <span>{getInitials(name)}</span>}

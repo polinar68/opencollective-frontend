@@ -95,7 +95,7 @@ export const generatePaymentMethodOptions = (paymentMethods, stepProfile, stepDe
 
     // Manual (bank transfer)
     const interval = get(stepDetails, 'interval', null);
-    if (hostHasManual && !interval) {
+    if (hostHasManual && !interval && !stepProfile.isGuest) {
       uniquePMs.push({
         key: 'manual',
         title: get(collective, 'host.settings.paymentMethods.manual.title', null) || 'Bank transfer',
