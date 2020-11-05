@@ -35,6 +35,7 @@ class ApplyToHostBtn extends React.Component {
     buttonSize: PropTypes.string,
     minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     disabled: PropTypes.bool,
+    isBorderless: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -44,7 +45,18 @@ class ApplyToHostBtn extends React.Component {
   };
 
   render() {
-    const { LoggedInUser, host, showConditions, buttonStyle, buttonSize, minWidth, disabled } = this.props;
+    const {
+      LoggedInUser,
+      host,
+      showConditions,
+      buttonStyle,
+      buttonSize,
+      minWidth,
+      disabled,
+      isBorderless,
+    } = this.props;
+
+    console.log('is borderless?', isBorderless);
 
     return (
       <div className="ApplyToHostBtn">
@@ -64,6 +76,7 @@ class ApplyToHostBtn extends React.Component {
               disabled={disabled}
               minWidth={minWidth}
               data-cy="host-apply-btn-logged-out"
+              isBorderless={isBorderless}
             >
               <FormattedMessage id="host.apply.create.btn" defaultMessage="Apply" />
             </StyledButton>
@@ -77,6 +90,7 @@ class ApplyToHostBtn extends React.Component {
             buttonStyle={buttonStyle}
             buttonSize={buttonSize}
             minWidth={minWidth}
+            isBorderless={isBorderless}
           />
         )}
         {showConditions && (

@@ -41,6 +41,7 @@ class ApplyToHostBtnLoggedIn extends React.Component {
     buttonSize: PropTypes.string,
     minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     disabled: PropTypes.bool,
+    isBorderless: PropTypes.bool,
   };
 
   constructor(props) {
@@ -75,7 +76,7 @@ class ApplyToHostBtnLoggedIn extends React.Component {
   }
 
   render() {
-    const { host, data, disabled, buttonStyle, buttonSize, minWidth } = this.props;
+    const { host, data, disabled, buttonStyle, buttonSize, minWidth, isBorderless } = this.props;
 
     if (data.loading) {
       return (
@@ -85,6 +86,7 @@ class ApplyToHostBtnLoggedIn extends React.Component {
           minWidth={minWidth}
           disabled
           data-cy="host-apply-btn-loading"
+          isBorderless
         >
           <FormattedMessage id="host.apply.create.btn" defaultMessage="Apply" />
         </StyledButton>
@@ -106,6 +108,7 @@ class ApplyToHostBtnLoggedIn extends React.Component {
                 disabled={disabled}
                 minWidth={minWidth}
                 data-cy="host-apply-btn"
+                isBorderless
               >
                 <FormattedMessage id="host.apply.create.btn" defaultMessage="Apply" />
               </StyledButton>
@@ -120,6 +123,7 @@ class ApplyToHostBtnLoggedIn extends React.Component {
                 onClick={() => this.handleModalDisplay()}
                 minWidth={minWidth}
                 data-cy="host-apply-btn"
+                isBorderless
               >
                 <FormattedMessage
                   id="host.apply.btn"

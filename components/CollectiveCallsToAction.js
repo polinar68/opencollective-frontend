@@ -33,7 +33,6 @@ const CollectiveCallsToAction = ({
   },
   ...props
 }) => {
-  console.log(hasContribute, hasSubmitExpense, hasContact, hasApply, hasDashboard, hasManageSubscriptions, addFunds);
   const [hasAddFundsModal, showAddFundsModal] = React.useState(false);
   const hostedCollectivesLimit = get(collective, 'plan.hostedCollectivesLimit');
   const hostWithinLimit = hostedCollectivesLimit

@@ -320,7 +320,9 @@ const CollectiveNavbar = ({
           )}
           {/* CTAs for v2 navbar */}
           {parseToBoolean(getEnvVar('NEW_COLLECTIVE_NAVBAR')) && (
-            <Fragment>{!isLoading && <CollectiveNavbarActionsMenu />}</Fragment>
+            <Fragment>
+              {!isLoading && <CollectiveNavbarActionsMenu collective={collective} callsToAction={callsToAction} />}
+            </Fragment>
           )}
         </Container>
       )}
