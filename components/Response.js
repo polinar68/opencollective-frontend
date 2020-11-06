@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import styled from 'styled-components';
 
 import colors from '../lib/constants/colors';
 
 import Avatar from './Avatar';
+import Container from './Container';
 
 const star = '/static/images/icons/star.svg';
+
+const StarObject = styled.object`
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 45px;
+  left: 0;
+`;
 
 class Response extends React.Component {
   static propTypes = {
@@ -47,51 +57,26 @@ class Response extends React.Component {
     return (
       <a href={linkTo} title={title}>
         <div>
-          <style jsx>
-            {`
-              .Response {
-                display: flex;
-                align-items: flex-start;
-                width: 100%;
-                margin: 10px;
-                max-width: 300px;
-                float: left;
-                position: relative;
-                height: 90px;
-                overflow: hidden;
-              }
-
-              .bubble {
-                padding: 0.25rem 1rem;
-              }
-
-              .name {
-                font-size: 1.5rem;
-              }
-
-              .description {
-                font-size: 1.2rem;
-              }
-
-              .star {
-                width: 14px;
-                height: 14px;
-                position: absolute;
-                top: 45px;
-                left: 0;
-              }
-            `}
-          </style>
-          <div className="Response">
-            {status === 'INTERESTED' && <object title={title} type="image/svg+xml" data={star} className="star" />}
+          <Container
+            display="flex"
+            alignItems="flex-start"
+            width="100%"
+            margin="10px"
+            maxWidth="300px"
+            float="left"
+            position="relative"
+            height="90px"
+            overflow="hidden"
+          >
+            {status === 'INTERESTED' && <StarObject title={title} type="image/svg+xml" data={star} className="star" />}
             <Avatar collective={user} radius={40} />
-            <div className="bubble">
-              <div className="name">{name}</div>
-              <div className="description" style={{ color: colors.darkgray }}>
+            <Container padding="0.25rem 1rem">
+              <Container fontSize="1.5rem">{name}</Container>
+              <Container fontSize="1.2rem" style={{ color: colors.darkgray }}>
                 {description || user.description}
-              </div>
-            </div>
-          </div>
+              </Container>
+            </Container>
+          </Container>
         </div>
       </a>
     );
